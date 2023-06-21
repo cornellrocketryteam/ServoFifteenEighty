@@ -14,8 +14,9 @@ void setup() {
   // start at 15 degrees. Due to servo orientation, writeAngle = 90 - desiredAngle.
   myservo.write(90-15);
 
-  //wait one second before starting to raise
-  delay(1000);
+  //wait for any serial message before starting to move
+  while (Serial.available() == 0) {
+  }
 
   for (pos = 15; pos <= 80; pos += 1) { // goes from 0 degrees to 180 degrees
     // in steps of 1 degree
